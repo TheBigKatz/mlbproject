@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script>
+  $(document).ready(function(){
+    $(".btn1").click(function(){
+      $("#batting_standard").hide();
+    });
+    $(".btn2").click(function(){
+      $("#batting_standard").show();
+    });
+
+    $(".btn3").click(function(){
+      $("#batting_standard2").hide();
+    });
+    $(".btn4").click(function(){
+      $("#batting_standard2").show();
+    });
+
+    $(".btn5").click(function(){
+      $("#batting_standard3").hide();
+    });
+    $(".btn6").click(function(){
+      $("#batting_standard3").show();
+    });
+
+    $(".btn7").click(function(){
+        $("#batting_standard4").hide();
+    });
+    $(".btn8").click(function(){
+        $("#batting_standard4").show();
+    });
+
+    $(".btn9").click(function(){
+        $("#batting_standard5").hide();
+    });
+    $(".btn10").click(function(){
+        $("#batting_standard5").show();
+    });
+
+    $(".btn11").click(function(){
+        $("#batting_standard6").hide();
+    });
+    $(".btn12").click(function(){
+        $("#batting_standard6").show();
+    });
+  });
+
+  </script>
+  <link href="mlb.css" rel="stylesheet">
+</head>
+<body>
+  <img src="mlb-logo.png"  width="400" height="225"/>
+  <button class="btn1">Hide</button>
+  <button class="btn2">Carlos Correa</button>
+  <button class="btn3">Hide</button>
+  <button class="btn4">Didi Gregorius</button>
+  <button class="btn5">Hide</button>
+  <button class="btn6">Jose Abreu</button>
+  <button class="btn7">Hide</button>
+  <button class="btn8">Anthony Rizzo</button>
+  <button class="btn9">Hide</button>
+  <button class="btn10">Robinson Cano</button>
+  <button class="btn11">Hide</button>
+  <button class="btn12">Starlin Castro</button>
+<div id="main">
+  <table class="sortable  stats_table row_summable" id="batting_standard">
+    <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+    <thead>
+      <tr class="">
+        <th data-stat="year_ID" align="left" class="tooltip sort_default_asc show_partial_when_sorting" tip="A Star indicates an all-star that season.<br>A Ring indicates the player appeared in WS for winning team.">Year</th>
+        <th data-stat="age" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Player’s age at midnight of June 30th of that year">Age</th>
+        <th data-stat="team_ID" align="center" class="tooltip sort_default_asc show_partial_when_sorting">Tm</th>
+        <th data-stat="lg_ID" align="center" class="tooltip sort_default_asc" tip="<strong>League</strong><br><strong>AL</strong> - American League (1901-present)<br><strong>NL</strong> - National League (1876-present)<br><strong>AA</strong> - American Association (1882-1891)<br><strong>UA</strong> - Union Association (1884)<br><strong>PL</strong> - Players League (1890)<br><strong>FL</strong> - Federal League (1914-1915)<br><strong>NA</strong> - National Association (1871-1875)">Lg</th>
+        <th data-stat="G" align="center" class="tooltip" tip="Games Played or Pitched" data-filter="1" data-name="Games Played">G</th>
+        <th data-stat="PA" align="center" class="tooltip" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-filter="1" data-name="Plate Appearances">PA</th>
+        <th data-stat="AB" align="center" class="tooltip" tip="At Bats" data-filter="1" data-name="At Bats">AB</th>
+        <th data-stat="R" align="center" class="tooltip" tip="Runs Scored/Allowed" data-filter="1" data-name="Runs Scored">R</th>
+        <th data-stat="H" align="center" class="tooltip" tip="Hits/Hits Allowed" data-filter="1" data-name="Hits">H</th>
+        <th data-stat="2B" align="center" class="tooltip" tip="Doubles Hit/Allowed" data-filter="1" data-name="Doubles">2B</th>
+        <th data-stat="3B" align="center" class="tooltip" tip="Triples Hit/Allowed" data-filter="1" data-name="Triples">3B</th>
+        <th data-stat="HR" align="center" class="tooltip" tip="Home Runs Hit/Allowed" data-filter="1" data-name="Home Runs">HR</th>
+        <th data-stat="RBI" align="center" class="tooltip" tip="Runs Batted In" data-filter="1" data-name="Runs Batted In">RBI</th>
+        <th data-stat="SB" align="center" class="tooltip" tip="Stolen Bases" data-filter="1" data-name="Stolen Bases">SB</th>
+        <th data-stat="CS" align="center" class="tooltip" tip="Caught Stealing" data-filter="1" data-name="Caught Stealing">CS</th>
+        <th data-stat="BB" align="center" class="tooltip" tip="Bases on Balls/Walks" data-filter="1" data-name="Bases on Balls">BB</th>
+        <th data-stat="SO" align="center" class="tooltip" tip="Strikeouts" data-filter="1" data-name="Strikeouts">SO</th>
+        <th data-stat="batting_avg" align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-filter="1" data-name="Batting Average">BA</th>
+        <th data-stat="onbase_perc" align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base%">OBP</th>
+        <th data-stat="slugging_perc" align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="Slugging %">SLG</th>
+        <th data-stat="onbase_plus_slugging" align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base Plus Slugging">OPS</th>
+        <th data-stat="onbase_plus_slugging_plus" align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-filter="1" data-name="Adjusted OPS+">OPS+</th>
+        <th data-stat="TB" align="center" class="tooltip" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-filter="1" data-name="Total Bases">TB</th>
+        <th data-stat="GIDP" align="center" class="tooltip" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-filter="1" data-name="Double Plays Grounded Into">GDP</th>
+        <th data-stat="HBP" align="center" class="tooltip" tip="Times Hit by a Pitch." data-filter="1" data-name="Hit By Pitch">HBP</th>
+        <th data-stat="SH" align="center" class="tooltip" tip="Sacrifice Hits (Sacrifice Bunts)" data-filter="1" data-name="Sacrifice Hits">SH</th>
+        <th data-stat="SF" align="center" class="tooltip" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-filter="1" data-name="Sacrifice Flies">SF</th>
+        <th data-stat="IBB" align="center" class="tooltip" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-filter="1" data-name="Intentional Bases on Balls">IBB</th>
+        <th data-stat="pos_season" align="left" class="tooltip sort_default_asc" tip="<strong>Position</strong><br>’*’ indicates position played in 2/3rds of team games,<br>’/’ less than 10 games played.">Pos</th>
+        <th data-stat="award_summary" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Summary of how player did in awards voting that year.<br>GG - Gold Glove<br>SS - Silver Slugger<br>MVP - Most Valuable Player<br>CYA - Cy Young Award<br>ROY - Rookie of the Year">Awards</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="full" id="batting_standard.2015" data-row="4">
+        <td align="left" csk="2015">2015</td>
+        <td align="right">20</td>
+        <td align="left"><a href="/teams/HOU/2015.shtml" title="Houston Astros">HOU</a></td>
+        <td align="left"><a href="/leagues/AL/2015.shtml">AL</a></td>
+        <td align="right">99</td>
+        <td align="right">432</td>
+        <td align="right">387</td>
+        <td align="right">52</td>
+        <td align="right">108</td>
+        <td align="right">22</td>
+        <td align="right">1</td>
+        <td align="right">22</td>
+        <td align="right">68</td>
+        <td align="right">14</td>
+        <td align="right">4</td>
+        <td align="right">40</td>
+        <td align="right">78</td>
+        <td align="right">.279</td>
+        <td align="right">.345</td>
+        <td align="right">.512</td>
+        <td align="right">.857</td>
+        <td align="right">134</td>
+        <td align="right">198</td>
+        <td align="right">10</td>
+        <td align="right">1</td>
+        <td align="right">0</td>
+        <td align="right">4</td>
+        <td align="right">2</td>
+        <td align="left">6</td>
+        <td align="left"><a href="/awards/awards_2015.shtml#ALmvp">MVP-24</a>,<a href="/awards/awards_2015.shtml#ALroy"><strong>RoY-1</strong></a></td>
+      </tr>
+      <tr class="full" id="batting_standard.2016" data-row="5">
+        <td align="left" csk="2016">2016</td>
+        <td align="right">21</td>
+        <td align="left"><a href="/teams/HOU/2016.shtml" title="Houston Astros">HOU</a></td>
+        <td align="left"><a href="/leagues/AL/2016.shtml">AL</a></td>
+        <td align="right">47</td>
+        <td align="right">209</td>
+        <td align="right">184</td>
+        <td align="right">22</td>
+        <td align="right">45</td>
+        <td align="right">8</td>
+        <td align="right">0</td>
+        <td align="right">7</td>
+        <td align="right">21</td>
+        <td align="right">8</td>
+        <td align="right">3</td>
+        <td align="right">23</td>
+        <td align="right">54</td>
+        <td align="right">.245</td>
+        <td align="right">.335</td>
+        <td align="right">.402</td>
+        <td align="right">.737</td>
+        <td align="right">105</td>
+        <td align="right">74</td>
+        <td align="right">4</td>
+        <td align="right">2</td>
+        <td align="right">0</td>
+        <td align="right">0</td>
+        <td align="right">1</td>
+        <td align="left">*6</td>
+        <td align="left"></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr class="stat_total" data-row="6">
+        <td align="left" colspan="4">2 Yrs</td>
+        <td align="right">146</td>
+        <td align="right">641</td>
+        <td align="right">571</td>
+        <td align="right">74</td>
+        <td align="right">153</td>
+        <td align="right">30</td>
+        <td align="right">1</td>
+        <td align="right">29</td>
+        <td align="right">89</td>
+        <td align="right">22</td>
+        <td align="right">7</td>
+        <td align="right">63</td>
+        <td align="right">132</td>
+        <td align="right">.268</td>
+        <td align="right">.342</td>
+        <td align="right">.476</td>
+        <td align="right">.818</td>
+        <td align="right">125</td>
+        <td align="right">272</td>
+        <td align="right">14</td>
+        <td align="right">3</td>
+        <td align="right">0</td>
+        <td align="right">4</td>
+        <td align="right">3</td>
+        <td align="left"></td>
+        <td align="left"></td>
+      </tr>
+      <tr class="stat_total" data-row="7">
+        <td align="left" colspan="4"><a href="http://www.baseball-reference.com/about/bat_glossary.shtml#162_avg">162 Game Avg.</a></td>
+        <td align="right">162</td>
+        <td align="right">711</td>
+        <td align="right">634</td>
+        <td align="right">82</td>
+        <td align="right">170</td>
+        <td align="right">33</td>
+        <td align="right">1</td>
+        <td align="right">32</td>
+        <td align="right">99</td>
+        <td align="right">24</td>
+        <td align="right">8</td>
+        <td align="right">70</td>
+        <td align="right">146</td>
+        <td align="right">.268</td>
+        <td align="right">.342</td>
+        <td align="right">.476</td>
+        <td align="right">.818</td>
+        <td align="right">125</td>
+        <td align="right">302</td>
+        <td align="right">16</td>
+        <td align="right">3</td>
+        <td align="right">0</td>
+        <td align="right">4</td>
+        <td align="right">3</td>
+        <td align="left"></td>
+        <td align="left"></td>
+      </tr>
+    </tfoot>
+  </table>
+
+
+  <div class="table_container" id="div_batting_standard">
+    <table class="sortable  stats_table row_summable" id="batting_standard2">
+      <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+      <thead>
+        <tr class="">
+          <th data-stat="year_ID" align="left" class="tooltip sort_default_asc show_partial_when_sorting" tip="A Star indicates an all-star that season.<br>A Ring indicates the player appeared in WS for winning team.">Year</th>
+          <th data-stat="age" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Player’s age at midnight of June 30th of that year">Age</th>
+          <th data-stat="team_ID" align="center" class="tooltip sort_default_asc show_partial_when_sorting">Tm</th>
+          <th data-stat="lg_ID" align="center" class="tooltip sort_default_asc" tip="<strong>League</strong><br><strong>AL</strong> - American League (1901-present)<br><strong>NL</strong> - National League (1876-present)<br><strong>AA</strong> - American Association (1882-1891)<br><strong>UA</strong> - Union Association (1884)<br><strong>PL</strong> - Players League (1890)<br><strong>FL</strong> - Federal League (1914-1915)<br><strong>NA</strong> - National Association (1871-1875)">Lg</th>
+          <th data-stat="G" align="center" class="tooltip" tip="Games Played or Pitched" data-filter="1" data-name="Games Played">G</th>
+          <th data-stat="PA" align="center" class="tooltip" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-filter="1" data-name="Plate Appearances">PA</th>
+          <th data-stat="AB" align="center" class="tooltip" tip="At Bats" data-filter="1" data-name="At Bats">AB</th>
+          <th data-stat="R" align="center" class="tooltip" tip="Runs Scored/Allowed" data-filter="1" data-name="Runs Scored">R</th>
+          <th data-stat="H" align="center" class="tooltip" tip="Hits/Hits Allowed" data-filter="1" data-name="Hits">H</th>
+          <th data-stat="2B" align="center" class="tooltip" tip="Doubles Hit/Allowed" data-filter="1" data-name="Doubles">2B</th>
+          <th data-stat="3B" align="center" class="tooltip" tip="Triples Hit/Allowed" data-filter="1" data-name="Triples">3B</th>
+          <th data-stat="HR" align="center" class="tooltip" tip="Home Runs Hit/Allowed" data-filter="1" data-name="Home Runs">HR</th>
+          <th data-stat="RBI" align="center" class="tooltip" tip="Runs Batted In" data-filter="1" data-name="Runs Batted In">RBI</th>
+          <th data-stat="SB" align="center" class="tooltip" tip="Stolen Bases" data-filter="1" data-name="Stolen Bases">SB</th>
+          <th data-stat="CS" align="center" class="tooltip" tip="Caught Stealing" data-filter="1" data-name="Caught Stealing">CS</th>
+          <th data-stat="BB" align="center" class="tooltip" tip="Bases on Balls/Walks" data-filter="1" data-name="Bases on Balls">BB</th>
+          <th data-stat="SO" align="center" class="tooltip" tip="Strikeouts" data-filter="1" data-name="Strikeouts">SO</th>
+          <th data-stat="batting_avg" align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-filter="1" data-name="Batting Average">BA</th>
+          <th data-stat="onbase_perc" align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base%">OBP</th>
+          <th data-stat="slugging_perc" align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="Slugging %">SLG</th>
+          <th data-stat="onbase_plus_slugging" align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base Plus Slugging">OPS</th>
+          <th data-stat="onbase_plus_slugging_plus" align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-filter="1" data-name="Adjusted OPS+">OPS+</th>
+          <th data-stat="TB" align="center" class="tooltip" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-filter="1" data-name="Total Bases">TB</th>
+          <th data-stat="GIDP" align="center" class="tooltip" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-filter="1" data-name="Double Plays Grounded Into">GDP</th>
+          <th data-stat="HBP" align="center" class="tooltip" tip="Times Hit by a Pitch." data-filter="1" data-name="Hit By Pitch">HBP</th>
+          <th data-stat="SH" align="center" class="tooltip" tip="Sacrifice Hits (Sacrifice Bunts)" data-filter="1" data-name="Sacrifice Hits">SH</th>
+          <th data-stat="SF" align="center" class="tooltip" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-filter="1" data-name="Sacrifice Flies">SF</th>
+          <th data-stat="IBB" align="center" class="tooltip" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-filter="1" data-name="Intentional Bases on Balls">IBB</th>
+          <th data-stat="pos_season" align="left" class="tooltip sort_default_asc" tip="<strong>Position</strong><br>’*’ indicates position played in 2/3rds of team games,<br>’/’ less than 10 games played.">Pos</th>
+          <th data-stat="award_summary" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Summary of how player did in awards voting that year.<br>GG - Gold Glove<br>SS - Silver Slugger<br>MVP - Most Valuable Player<br>CYA - Cy Young Award<br>ROY - Rookie of the Year">Awards</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="full" id="batting_standard.2012" data-row="5">
+          <td align="left" csk="2012">2012</td>
+          <td align="right">22</td>
+          <td align="left"><a href="/teams/CIN/2012.shtml" title="Cincinnati Reds">CIN</a></td>
+          <td align="left"><a href="/leagues/NL/2012.shtml">NL</a></td>
+          <td align="right">8</td>
+          <td align="right">21</td>
+          <td align="right">20</td>
+          <td align="right">1</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">2</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">5</td>
+          <td align="right">.300</td>
+          <td align="right">.300</td>
+          <td align="right">.300</td>
+          <td align="right">.600</td>
+          <td align="right">62</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="left">/6</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2013" data-row="7">
+          <td align="left" csk="2013">2013</td>
+          <td align="right">23</td>
+          <td align="left"><a href="/teams/ARI/2013.shtml" title="Arizona Diamondbacks">ARI</a></td>
+          <td align="left"><a href="/leagues/NL/2013.shtml">NL</a></td>
+          <td align="right">103</td>
+          <td align="right">404</td>
+          <td align="right">357</td>
+          <td align="right">47</td>
+          <td align="right">90</td>
+          <td align="right">16</td>
+          <td align="right">3</td>
+          <td align="right">7</td>
+          <td align="right">28</td>
+          <td align="right">0</td>
+          <td align="right">2</td>
+          <td align="right">37</td>
+          <td align="right">65</td>
+          <td align="right">.252</td>
+          <td align="right">.332</td>
+          <td align="right">.373</td>
+          <td align="right">.704</td>
+          <td align="right">94</td>
+          <td align="right">133</td>
+          <td align="right">4</td>
+          <td align="right">6</td>
+          <td align="right">2</td>
+          <td align="right">1</td>
+          <td align="right">5</td>
+          <td align="left">6</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2014" data-row="9">
+          <td align="left" csk="2014">2014</td>
+          <td align="right">24</td>
+          <td align="left"><a href="/teams/ARI/2014.shtml" title="Arizona Diamondbacks">ARI</a></td>
+          <td align="left"><a href="/leagues/NL/2014.shtml">NL</a></td>
+          <td align="right">80</td>
+          <td align="right">299</td>
+          <td align="right">270</td>
+          <td align="right">35</td>
+          <td align="right">61</td>
+          <td align="right">9</td>
+          <td align="right">5</td>
+          <td align="right">6</td>
+          <td align="right">27</td>
+          <td align="right">3</td>
+          <td align="right">0</td>
+          <td align="right">22</td>
+          <td align="right">52</td>
+          <td align="right">.226</td>
+          <td align="right">.290</td>
+          <td align="right">.363</td>
+          <td align="right">.653</td>
+          <td align="right">81</td>
+          <td align="right">98</td>
+          <td align="right">1</td>
+          <td align="right">3</td>
+          <td align="right">2</td>
+          <td align="right">2</td>
+          <td align="right">3</td>
+          <td align="left">64/5</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2015" data-row="10">
+          <td align="left" csk="2015">2015</td>
+          <td align="right">25</td>
+          <td align="left"><a href="/teams/NYY/2015.shtml" title="New York Yankees">NYY</a></td>
+          <td align="left"><a href="/leagues/AL/2015.shtml">AL</a></td>
+          <td align="right">155</td>
+          <td align="right">578</td>
+          <td align="right">525</td>
+          <td align="right">57</td>
+          <td align="right">139</td>
+          <td align="right">24</td>
+          <td align="right">2</td>
+          <td align="right">9</td>
+          <td align="right">56</td>
+          <td align="right">5</td>
+          <td align="right">3</td>
+          <td align="right">33</td>
+          <td align="right">85</td>
+          <td align="right">.265</td>
+          <td align="right">.318</td>
+          <td align="right">.370</td>
+          <td align="right">.688</td>
+          <td align="right">89</td>
+          <td align="right">194</td>
+          <td align="right">4</td>
+          <td align="right">11</td>
+          <td align="right">3</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="left">*6</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2016" data-row="11">
+          <td align="left" csk="2016">2016</td>
+          <td align="right">26</td>
+          <td align="left"><a href="/teams/NYY/2016.shtml" title="New York Yankees">NYY</a></td>
+          <td align="left"><a href="/leagues/AL/2016.shtml">AL</a></td>
+          <td align="right">42</td>
+          <td align="right">153</td>
+          <td align="right">145</td>
+          <td align="right">14</td>
+          <td align="right">40</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">4</td>
+          <td align="right">17</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">4</td>
+          <td align="right">18</td>
+          <td align="right">.276</td>
+          <td align="right">.298</td>
+          <td align="right">.400</td>
+          <td align="right">.698</td>
+          <td align="right">90</td>
+          <td align="right">58</td>
+          <td align="right">3</td>
+          <td align="right">1</td>
+          <td align="right">2</td>
+          <td align="right">1</td>
+          <td align="right">0</td>
+          <td align="left">*6</td>
+          <td align="left"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="stat_total" data-row="12">
+          <td align="left" colspan="4">5 Yrs</td>
+          <td align="right">388</td>
+          <td align="right">1455</td>
+          <td align="right">1317</td>
+          <td align="right">154</td>
+          <td align="right">336</td>
+          <td align="right">55</td>
+          <td align="right">10</td>
+          <td align="right">26</td>
+          <td align="right">130</td>
+          <td align="right">9</td>
+          <td align="right">6</td>
+          <td align="right">96</td>
+          <td align="right">225</td>
+          <td align="right">.255</td>
+          <td align="right">.314</td>
+          <td align="right">.371</td>
+          <td align="right">.685</td>
+          <td align="right">89</td>
+          <td align="right">489</td>
+          <td align="right">12</td>
+          <td align="right">21</td>
+          <td align="right">10</td>
+          <td align="right">10</td>
+          <td align="right">8</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="13">
+          <td align="left" colspan="4"><a href="http://www.baseball-reference.com/about/bat_glossary.shtml#162_avg">162 Game Avg.</a></td>
+          <td align="right">162</td>
+          <td align="right">608</td>
+          <td align="right">550</td>
+          <td align="right">64</td>
+          <td align="right">140</td>
+          <td align="right">23</td>
+          <td align="right">4</td>
+          <td align="right">11</td>
+          <td align="right">54</td>
+          <td align="right">4</td>
+          <td align="right">3</td>
+          <td align="right">40</td>
+          <td align="right">94</td>
+          <td align="right">.255</td>
+          <td align="right">.314</td>
+          <td align="right">.371</td>
+          <td align="right">.685</td>
+          <td align="right">89</td>
+          <td align="right">204</td>
+          <td align="right">5</td>
+          <td align="right">9</td>
+          <td align="right">4</td>
+          <td align="right">4</td>
+          <td align="right">3</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="blank_table partial_table stat_total" data-row="14">
+          <td align="left" colspan="4"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="15">
+          <td align="left" colspan="4">ARI (2 yrs)</td>
+          <td align="right">183</td>
+          <td align="right">703</td>
+          <td align="right">627</td>
+          <td align="right">82</td>
+          <td align="right">151</td>
+          <td align="right">25</td>
+          <td align="right">8</td>
+          <td align="right">13</td>
+          <td align="right">55</td>
+          <td align="right">3</td>
+          <td align="right">2</td>
+          <td align="right">59</td>
+          <td align="right">117</td>
+          <td align="right">.241</td>
+          <td align="right">.314</td>
+          <td align="right">.368</td>
+          <td align="right">.682</td>
+          <td align="right">88</td>
+          <td align="right">231</td>
+          <td align="right">5</td>
+          <td align="right">9</td>
+          <td align="right">4</td>
+          <td align="right">3</td>
+          <td align="right">8</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="16">
+          <td align="left" colspan="4">NYY (2 yrs)</td>
+          <td align="right">197</td>
+          <td align="right">731</td>
+          <td align="right">670</td>
+          <td align="right">71</td>
+          <td align="right">179</td>
+          <td align="right">30</td>
+          <td align="right">2</td>
+          <td align="right">13</td>
+          <td align="right">73</td>
+          <td align="right">6</td>
+          <td align="right">4</td>
+          <td align="right">37</td>
+          <td align="right">103</td>
+          <td align="right">.267</td>
+          <td align="right">.314</td>
+          <td align="right">.376</td>
+          <td align="right">.690</td>
+          <td align="right">90</td>
+          <td align="right">252</td>
+          <td align="right">7</td>
+          <td align="right">12</td>
+          <td align="right">5</td>
+          <td align="right">7</td>
+          <td align="right">0</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="17">
+          <td align="left" colspan="4">CIN (1 yr)</td>
+          <td align="right">8</td>
+          <td align="right">21</td>
+          <td align="right">20</td>
+          <td align="right">1</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">2</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">5</td>
+          <td align="right">.300</td>
+          <td align="right">.300</td>
+          <td align="right">.300</td>
+          <td align="right">.600</td>
+          <td align="right">62</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="blank_table partial_table stat_total" data-row="18">
+          <td align="left" colspan="4"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="19">
+          <td align="left" colspan="4">NL (3 yrs)</td>
+          <td align="right">191</td>
+          <td align="right">724</td>
+          <td align="right">647</td>
+          <td align="right">83</td>
+          <td align="right">157</td>
+          <td align="right">25</td>
+          <td align="right">8</td>
+          <td align="right">13</td>
+          <td align="right">57</td>
+          <td align="right">3</td>
+          <td align="right">2</td>
+          <td align="right">59</td>
+          <td align="right">122</td>
+          <td align="right">.243</td>
+          <td align="right">.313</td>
+          <td align="right">.366</td>
+          <td align="right">.680</td>
+          <td align="right">88</td>
+          <td align="right">237</td>
+          <td align="right">5</td>
+          <td align="right">9</td>
+          <td align="right">5</td>
+          <td align="right">3</td>
+          <td align="right">8</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="20">
+          <td align="left" colspan="4">AL (2 yrs)</td>
+          <td align="right">197</td>
+          <td align="right">731</td>
+          <td align="right">670</td>
+          <td align="right">71</td>
+          <td align="right">179</td>
+          <td align="right">30</td>
+          <td align="right">2</td>
+          <td align="right">13</td>
+          <td align="right">73</td>
+          <td align="right">6</td>
+          <td align="right">4</td>
+          <td align="right">37</td>
+          <td align="right">103</td>
+          <td align="right">.267</td>
+          <td align="right">.314</td>
+          <td align="right">.376</td>
+          <td align="right">.690</td>
+          <td align="right">90</td>
+          <td align="right">252</td>
+          <td align="right">7</td>
+          <td align="right">12</td>
+          <td align="right">5</td>
+          <td align="right">7</td>
+          <td align="right">0</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+
+  <div class="table_container" id="div_batting_standard">
+    <table class="sortable  stats_table row_summable" id="batting_standard3">
+      <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+      <thead>
+        <tr class="">
+          <th data-stat="year_ID" align="left" class="tooltip sort_default_asc show_partial_when_sorting" tip="A Star indicates an all-star that season.<br>A Ring indicates the player appeared in WS for winning team.">Year</th>
+          <th data-stat="age" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Player’s age at midnight of June 30th of that year">Age</th>
+          <th data-stat="team_ID" align="center" class="tooltip sort_default_asc show_partial_when_sorting">Tm</th>
+          <th data-stat="lg_ID" align="center" class="tooltip sort_default_asc" tip="<strong>League</strong><br><strong>AL</strong> - American League (1901-present)<br><strong>NL</strong> - National League (1876-present)<br><strong>AA</strong> - American Association (1882-1891)<br><strong>UA</strong> - Union Association (1884)<br><strong>PL</strong> - Players League (1890)<br><strong>FL</strong> - Federal League (1914-1915)<br><strong>NA</strong> - National Association (1871-1875)">Lg</th>
+          <th data-stat="G" align="center" class="tooltip" tip="Games Played or Pitched" data-filter="1" data-name="Games Played">G</th>
+          <th data-stat="PA" align="center" class="tooltip" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-filter="1" data-name="Plate Appearances">PA</th>
+          <th data-stat="AB" align="center" class="tooltip" tip="At Bats" data-filter="1" data-name="At Bats">AB</th>
+          <th data-stat="R" align="center" class="tooltip" tip="Runs Scored/Allowed" data-filter="1" data-name="Runs Scored">R</th>
+          <th data-stat="H" align="center" class="tooltip" tip="Hits/Hits Allowed" data-filter="1" data-name="Hits">H</th>
+          <th data-stat="2B" align="center" class="tooltip" tip="Doubles Hit/Allowed" data-filter="1" data-name="Doubles">2B</th>
+          <th data-stat="3B" align="center" class="tooltip" tip="Triples Hit/Allowed" data-filter="1" data-name="Triples">3B</th>
+          <th data-stat="HR" align="center" class="tooltip" tip="Home Runs Hit/Allowed" data-filter="1" data-name="Home Runs">HR</th>
+          <th data-stat="RBI" align="center" class="tooltip" tip="Runs Batted In" data-filter="1" data-name="Runs Batted In">RBI</th>
+          <th data-stat="SB" align="center" class="tooltip" tip="Stolen Bases" data-filter="1" data-name="Stolen Bases">SB</th>
+          <th data-stat="CS" align="center" class="tooltip" tip="Caught Stealing" data-filter="1" data-name="Caught Stealing">CS</th>
+          <th data-stat="BB" align="center" class="tooltip" tip="Bases on Balls/Walks" data-filter="1" data-name="Bases on Balls">BB</th>
+          <th data-stat="SO" align="center" class="tooltip" tip="Strikeouts" data-filter="1" data-name="Strikeouts">SO</th>
+          <th data-stat="batting_avg" align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-filter="1" data-name="Batting Average">BA</th>
+          <th data-stat="onbase_perc" align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base%">OBP</th>
+          <th data-stat="slugging_perc" align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="Slugging %">SLG</th>
+          <th data-stat="onbase_plus_slugging" align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base Plus Slugging">OPS</th>
+          <th data-stat="onbase_plus_slugging_plus" align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-filter="1" data-name="Adjusted OPS+">OPS+</th>
+          <th data-stat="TB" align="center" class="tooltip" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-filter="1" data-name="Total Bases">TB</th>
+          <th data-stat="GIDP" align="center" class="tooltip" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-filter="1" data-name="Double Plays Grounded Into">GDP</th>
+          <th data-stat="HBP" align="center" class="tooltip" tip="Times Hit by a Pitch." data-filter="1" data-name="Hit By Pitch">HBP</th>
+          <th data-stat="SH" align="center" class="tooltip" tip="Sacrifice Hits (Sacrifice Bunts)" data-filter="1" data-name="Sacrifice Hits">SH</th>
+          <th data-stat="SF" align="center" class="tooltip" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-filter="1" data-name="Sacrifice Flies">SF</th>
+          <th data-stat="IBB" align="center" class="tooltip" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-filter="1" data-name="Intentional Bases on Balls">IBB</th>
+          <th data-stat="pos_season" align="left" class="tooltip sort_default_asc" tip="<strong>Position</strong><br>’*’ indicates position played in 2/3rds of team games,<br>’/’ less than 10 games played.">Pos</th>
+          <th data-stat="award_summary" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Summary of how player did in awards voting that year.<br>GG - Gold Glove<br>SS - Silver Slugger<br>MVP - Most Valuable Player<br>CYA - Cy Young Award<br>ROY - Rookie of the Year">Awards</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="full" id="batting_standard.2015" data-row="11">
+          <td align="left" csk="2015">2015</td>
+          <td align="right">28</td>
+          <td align="left"><a href="/teams/CHW/2015.shtml" title="Chicago White Sox">CHW</a></td>
+          <td align="left"><a href="/leagues/AL/2015.shtml">AL</a></td>
+          <td align="right">154</td>
+          <td align="right">668</td>
+          <td align="right">613</td>
+          <td align="right">88</td>
+          <td align="right">178</td>
+          <td align="right">34</td>
+          <td align="right">3</td>
+          <td align="right">30</td>
+          <td align="right">101</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">39</td>
+          <td align="right">140</td>
+          <td align="right">.290</td>
+          <td align="right">.347</td>
+          <td align="right">.502</td>
+          <td align="right">.850</td>
+          <td align="right">136</td>
+          <td align="right">308</td>
+          <td align="right">16</td>
+          <td align="right">15</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">11</td>
+          <td align="left">*3D</td>
+          <td align="left"><a href="/awards/awards_2015.shtml#ALmvp">MVP-21</a></td>
+        </tr>
+        <tr class="full" id="batting_standard.2016" data-row="12">
+          <td align="left" csk="2016">2016</td>
+          <td align="right">29</td>
+          <td align="left"><a href="/teams/CHW/2016.shtml" title="Chicago White Sox">CHW</a></td>
+          <td align="left"><a href="/leagues/AL/2016.shtml">AL</a></td>
+          <td align="right">47</td>
+          <td align="right">209</td>
+          <td align="right">186</td>
+          <td align="right">18</td>
+          <td align="right">48</td>
+          <td align="right">9</td>
+          <td align="right">1</td>
+          <td align="right">6</td>
+          <td align="right">27</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">15</td>
+          <td align="right">43</td>
+          <td align="right">.258</td>
+          <td align="right">.325</td>
+          <td align="right">.414</td>
+          <td align="right">.739</td>
+          <td align="right">108</td>
+          <td align="right">77</td>
+          <td align="right">8</td>
+          <td align="right">5</td>
+          <td align="right">0</td>
+          <td align="right">3</td>
+          <td align="right">3</td>
+          <td align="left">*3/D</td>
+          <td align="left"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="stat_total" data-row="13">
+          <td align="left" colspan="4">3 Yrs</td>
+          <td align="right">346</td>
+          <td align="right">1499</td>
+          <td align="right">1355</td>
+          <td align="right">186</td>
+          <td align="right">402</td>
+          <td align="right">78</td>
+          <td align="right">6</td>
+          <td align="right">72</td>
+          <td align="right">235</td>
+          <td align="right">3</td>
+          <td align="right">2</td>
+          <td align="right">105</td>
+          <td align="right">314</td>
+          <td align="right">.297</td>
+          <td align="right">.359</td>
+          <td align="right">.523</td>
+          <td align="right">.881</td>
+          <td align="right">147</td>
+          <td align="right">708</td>
+          <td align="right">38</td>
+          <td align="right">31</td>
+          <td align="right">0</td>
+          <td align="right">8</td>
+          <td align="right">29</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class=" stat_total" data-row="14">
+          <td align="left" colspan="4"><a href="http://www.baseball-reference.com/about/bat_glossary.shtml#162_avg">162 Game Avg.</a></td>
+          <td align="right">162</td>
+          <td align="right">702</td>
+          <td align="right">634</td>
+          <td align="right">87</td>
+          <td align="right">188</td>
+          <td align="right">37</td>
+          <td align="right">3</td>
+          <td align="right">34</td>
+          <td align="right">110</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">49</td>
+          <td align="right">147</td>
+          <td align="right">.297</td>
+          <td align="right">.359</td>
+          <td align="right">.523</td>
+          <td align="right">.881</td>
+          <td align="right">147</td>
+          <td align="right">331</td>
+          <td align="right">18</td>
+          <td align="right">15</td>
+          <td align="right">0</td>
+          <td align="right">4</td>
+          <td align="right">14</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+
+
+
+
+  <div class="table_container" id="div_batting_standard">
+    <table class="sortable  stats_table row_summable" id="batting_standard4">
+      <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+      <thead>
+        <tr class="">
+          <th data-stat="year_ID" align="left" class="tooltip sort_default_asc show_partial_when_sorting" tip="A Star indicates an all-star that season.<br>A Ring indicates the player appeared in WS for winning team.">Year</th>
+          <th data-stat="age" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Player’s age at midnight of June 30th of that year">Age</th>
+          <th data-stat="team_ID" align="center" class="tooltip sort_default_asc show_partial_when_sorting">Tm</th>
+          <th data-stat="lg_ID" align="center" class="tooltip sort_default_asc" tip="<strong>League</strong><br><strong>AL</strong> - American League (1901-present)<br><strong>NL</strong> - National League (1876-present)<br><strong>AA</strong> - American Association (1882-1891)<br><strong>UA</strong> - Union Association (1884)<br><strong>PL</strong> - Players League (1890)<br><strong>FL</strong> - Federal League (1914-1915)<br><strong>NA</strong> - National Association (1871-1875)">Lg</th>
+          <th data-stat="G" align="center" class="tooltip" tip="Games Played or Pitched" data-filter="1" data-name="Games Played">G</th>
+          <th data-stat="PA" align="center" class="tooltip" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-filter="1" data-name="Plate Appearances">PA</th>
+          <th data-stat="AB" align="center" class="tooltip" tip="At Bats" data-filter="1" data-name="At Bats">AB</th>
+          <th data-stat="R" align="center" class="tooltip" tip="Runs Scored/Allowed" data-filter="1" data-name="Runs Scored">R</th>
+          <th data-stat="H" align="center" class="tooltip" tip="Hits/Hits Allowed" data-filter="1" data-name="Hits">H</th>
+          <th data-stat="2B" align="center" class="tooltip" tip="Doubles Hit/Allowed" data-filter="1" data-name="Doubles">2B</th>
+          <th data-stat="3B" align="center" class="tooltip" tip="Triples Hit/Allowed" data-filter="1" data-name="Triples">3B</th>
+          <th data-stat="HR" align="center" class="tooltip" tip="Home Runs Hit/Allowed" data-filter="1" data-name="Home Runs">HR</th>
+          <th data-stat="RBI" align="center" class="tooltip" tip="Runs Batted In" data-filter="1" data-name="Runs Batted In">RBI</th>
+          <th data-stat="SB" align="center" class="tooltip" tip="Stolen Bases" data-filter="1" data-name="Stolen Bases">SB</th>
+          <th data-stat="CS" align="center" class="tooltip" tip="Caught Stealing" data-filter="1" data-name="Caught Stealing">CS</th>
+          <th data-stat="BB" align="center" class="tooltip" tip="Bases on Balls/Walks" data-filter="1" data-name="Bases on Balls">BB</th>
+          <th data-stat="SO" align="center" class="tooltip" tip="Strikeouts" data-filter="1" data-name="Strikeouts">SO</th>
+          <th data-stat="batting_avg" align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-filter="1" data-name="Batting Average">BA</th>
+          <th data-stat="onbase_perc" align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base%">OBP</th>
+          <th data-stat="slugging_perc" align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="Slugging %">SLG</th>
+          <th data-stat="onbase_plus_slugging" align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base Plus Slugging">OPS</th>
+          <th data-stat="onbase_plus_slugging_plus" align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-filter="1" data-name="Adjusted OPS+">OPS+</th>
+          <th data-stat="TB" align="center" class="tooltip" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-filter="1" data-name="Total Bases">TB</th>
+          <th data-stat="GIDP" align="center" class="tooltip" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-filter="1" data-name="Double Plays Grounded Into">GDP</th>
+          <th data-stat="HBP" align="center" class="tooltip" tip="Times Hit by a Pitch." data-filter="1" data-name="Hit By Pitch">HBP</th>
+          <th data-stat="SH" align="center" class="tooltip" tip="Sacrifice Hits (Sacrifice Bunts)" data-filter="1" data-name="Sacrifice Hits">SH</th>
+          <th data-stat="SF" align="center" class="tooltip" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-filter="1" data-name="Sacrifice Flies">SF</th>
+          <th data-stat="IBB" align="center" class="tooltip" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-filter="1" data-name="Intentional Bases on Balls">IBB</th>
+          <th data-stat="pos_season" align="left" class="tooltip sort_default_asc" tip="<strong>Position</strong><br>’*’ indicates position played in 2/3rds of team games,<br>’/’ less than 10 games played.">Pos</th>
+          <th data-stat="award_summary" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Summary of how player did in awards voting that year.<br>GG - Gold Glove<br>SS - Silver Slugger<br>MVP - Most Valuable Player<br>CYA - Cy Young Award<br>ROY - Rookie of the Year">Awards</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="full" id="batting_standard.2011" data-row="5">
+          <td align="left" csk="2011">2011</td>
+          <td align="right">21</td>
+          <td align="left"><a href="/teams/SDP/2011.shtml" title="San Diego Padres">SDP</a></td>
+          <td align="left"><a href="/leagues/NL/2011.shtml">NL</a></td>
+          <td align="right">49</td>
+          <td align="right">153</td>
+          <td align="right">128</td>
+          <td align="right">9</td>
+          <td align="right">18</td>
+          <td align="right">8</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">9</td>
+          <td align="right">2</td>
+          <td align="right">1</td>
+          <td align="right">21</td>
+          <td align="right">46</td>
+          <td align="right">.141</td>
+          <td align="right">.281</td>
+          <td align="right">.242</td>
+          <td align="right">.523</td>
+          <td align="right">51</td>
+          <td align="right">31</td>
+          <td align="right">2</td>
+          <td align="right">4</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="left">3</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2012" data-row="7">
+          <td align="left" csk="2012">2012</td>
+          <td align="right">22</td>
+          <td align="left"><a href="/teams/CHC/2012.shtml" title="Chicago Cubs">CHC</a></td>
+          <td align="left"><a href="/leagues/NL/2012.shtml">NL</a></td>
+          <td align="right">87</td>
+          <td align="right">368</td>
+          <td align="right">337</td>
+          <td align="right">44</td>
+          <td align="right">96</td>
+          <td align="right">15</td>
+          <td align="right">0</td>
+          <td align="right">15</td>
+          <td align="right">48</td>
+          <td align="right">3</td>
+          <td align="right">2</td>
+          <td align="right">27</td>
+          <td align="right">62</td>
+          <td align="right">.285</td>
+          <td align="right">.342</td>
+          <td align="right">.463</td>
+          <td align="right">.805</td>
+          <td align="right">116</td>
+          <td align="right">156</td>
+          <td align="right">7</td>
+          <td align="right">3</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="left">3</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2013" data-row="8">
+          <td align="left" csk="2013">2013</td>
+          <td align="right">23</td>
+          <td align="left"><a href="/teams/CHC/2013.shtml" title="Chicago Cubs">CHC</a></td>
+          <td align="left"><a href="/leagues/NL/2013.shtml">NL</a></td>
+          <td align="right">160</td>
+          <td align="right">690</td>
+          <td align="right">606</td>
+          <td align="right">71</td>
+          <td align="right">141</td>
+          <td align="right">40</td>
+          <td align="right">2</td>
+          <td align="right">23</td>
+          <td align="right">80</td>
+          <td align="right">6</td>
+          <td align="right">5</td>
+          <td align="right">76</td>
+          <td align="right">127</td>
+          <td align="right">.233</td>
+          <td align="right">.323</td>
+          <td align="right">.419</td>
+          <td align="right">.742</td>
+          <td align="right">103</td>
+          <td align="right">254</td>
+          <td align="right">12</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">2</td>
+          <td align="right">7</td>
+          <td align="left">*3</td>
+          <td align="left"></td>
+        </tr>
+        <tr class="full" id="batting_standard.2014" data-row="9">
+          <td align="left" csk="2014">2014<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+          <td align="right">24</td>
+          <td align="left"><a href="/teams/CHC/2014.shtml" title="Chicago Cubs">CHC</a></td>
+          <td align="left"><a href="/leagues/NL/2014.shtml">NL</a></td>
+          <td align="right">140</td>
+          <td align="right">616</td>
+          <td align="right">524</td>
+          <td align="right">89</td>
+          <td align="right">150</td>
+          <td align="right">28</td>
+          <td align="right">1</td>
+          <td align="right">32</td>
+          <td align="right">78</td>
+          <td align="right">5</td>
+          <td align="right">4</td>
+          <td align="right">73</td>
+          <td align="right">116</td>
+          <td align="right">.286</td>
+          <td align="right">.386</td>
+          <td align="right">.527</td>
+          <td align="right">.913</td>
+          <td align="right">152</td>
+          <td align="right">276</td>
+          <td align="right">8</td>
+          <td align="right">15</td>
+          <td align="right">0</td>
+          <td align="right">4</td>
+          <td align="right">7</td>
+          <td align="left">*3</td>
+          <td align="left"><a title="All-Star" href="/boxes/ALS/ALS201407150.shtml">AS</a>,<a href="/awards/awards_2014.shtml#NLmvp">MVP-10</a></td>
+        </tr>
+        <tr class="full" id="batting_standard.2015" data-row="10">
+          <td align="left" csk="2015">2015<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+          <td align="right">25</td>
+          <td align="left"><a href="/teams/CHC/2015.shtml" title="Chicago Cubs">CHC</a></td>
+          <td align="left"><a href="/leagues/NL/2015.shtml">NL</a></td>
+          <td align="right"><strong>160</strong></td>
+          <td align="right"><strong>701</strong></td>
+          <td align="right">586</td>
+          <td align="right">94</td>
+          <td align="right">163</td>
+          <td align="right">38</td>
+          <td align="right">3</td>
+          <td align="right">31</td>
+          <td align="right">101</td>
+          <td align="right">17</td>
+          <td align="right">6</td>
+          <td align="right">78</td>
+          <td align="right">105</td>
+          <td align="right">.278</td>
+          <td align="right">.387</td>
+          <td align="right">.512</td>
+          <td align="right">.899</td>
+          <td align="right">144</td>
+          <td align="right">300</td>
+          <td align="right">9</td>
+          <td align="right"><strong><em>30</em></strong></td>
+          <td align="right">0</td>
+          <td align="right">7</td>
+          <td align="right">9</td>
+          <td align="left">*3</td>
+          <td align="left"><a title="All-Star" href="/boxes/NLS/NLS201507140.shtml">AS</a>,<a href="/awards/awards_2015.shtml#NLmvp">MVP-4</a></td>
+        </tr>
+        <tr class="full" id="batting_standard.2016" data-row="11">
+          <td align="left" csk="2016">2016</td>
+          <td align="right">26</td>
+          <td align="left"><a href="/teams/CHC/2016.shtml" title="Chicago Cubs">CHC</a></td>
+          <td align="left"><a href="/leagues/NL/2016.shtml">NL</a></td>
+          <td align="right">45</td>
+          <td align="right">205</td>
+          <td align="right">167</td>
+          <td align="right">29</td>
+          <td align="right">39</td>
+          <td align="right">9</td>
+          <td align="right">1</td>
+          <td align="right">11</td>
+          <td align="right">35</td>
+          <td align="right">2</td>
+          <td align="right">1</td>
+          <td align="right">31</td>
+          <td align="right">25</td>
+          <td align="right">.234</td>
+          <td align="right">.371</td>
+          <td align="right">.497</td>
+          <td align="right">.868</td>
+          <td align="right">132</td>
+          <td align="right">83</td>
+          <td align="right">3</td>
+          <td align="right">6</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="right">4</td>
+          <td align="left">*3</td>
+          <td align="left"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr class="stat_total" data-row="12">
+          <td align="left" colspan="4">6 Yrs</td>
+          <td align="right">641</td>
+          <td align="right">2733</td>
+          <td align="right">2348</td>
+          <td align="right">336</td>
+          <td align="right">607</td>
+          <td align="right">138</td>
+          <td align="right">8</td>
+          <td align="right">113</td>
+          <td align="right">351</td>
+          <td align="right">35</td>
+          <td align="right">19</td>
+          <td align="right">306</td>
+          <td align="right">481</td>
+          <td align="right">.259</td>
+          <td align="right">.357</td>
+          <td align="right">.468</td>
+          <td align="right">.826</td>
+          <td align="right">126</td>
+          <td align="right">1100</td>
+          <td align="right">41</td>
+          <td align="right">64</td>
+          <td align="right">0</td>
+          <td align="right">15</td>
+          <td align="right">29</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class=" stat_total" data-row="13">
+          <td align="left" colspan="4"><a href="http://www.baseball-reference.com/about/bat_glossary.shtml#162_avg">162 Game Avg.</a></td>
+          <td align="right">162</td>
+          <td align="right">691</td>
+          <td align="right">593</td>
+          <td align="right">85</td>
+          <td align="right">153</td>
+          <td align="right">35</td>
+          <td align="right">2</td>
+          <td align="right">29</td>
+          <td align="right">89</td>
+          <td align="right">9</td>
+          <td align="right">5</td>
+          <td align="right">77</td>
+          <td align="right">122</td>
+          <td align="right">.259</td>
+          <td align="right">.357</td>
+          <td align="right">.468</td>
+          <td align="right">.826</td>
+          <td align="right">126</td>
+          <td align="right">278</td>
+          <td align="right">10</td>
+          <td align="right">16</td>
+          <td align="right">0</td>
+          <td align="right">4</td>
+          <td align="right">7</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="blank_table partial_table stat_total" data-row="14">
+          <td align="left" colspan="4"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="right"></td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="15">
+          <td align="left" colspan="4">CHC (5 yrs)</td>
+          <td align="right">592</td>
+          <td align="right">2580</td>
+          <td align="right">2220</td>
+          <td align="right">327</td>
+          <td align="right">589</td>
+          <td align="right">130</td>
+          <td align="right">7</td>
+          <td align="right">112</td>
+          <td align="right">342</td>
+          <td align="right">33</td>
+          <td align="right">18</td>
+          <td align="right">285</td>
+          <td align="right">435</td>
+          <td align="right">.265</td>
+          <td align="right">.362</td>
+          <td align="right">.482</td>
+          <td align="right">.844</td>
+          <td align="right">130</td>
+          <td align="right">1069</td>
+          <td align="right">39</td>
+          <td align="right">60</td>
+          <td align="right">0</td>
+          <td align="right">15</td>
+          <td align="right">28</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+        <tr class="stat_total" data-row="16">
+          <td align="left" colspan="4">SDP (1 yr)</td>
+          <td align="right">49</td>
+          <td align="right">153</td>
+          <td align="right">128</td>
+          <td align="right">9</td>
+          <td align="right">18</td>
+          <td align="right">8</td>
+          <td align="right">1</td>
+          <td align="right">1</td>
+          <td align="right">9</td>
+          <td align="right">2</td>
+          <td align="right">1</td>
+          <td align="right">21</td>
+          <td align="right">46</td>
+          <td align="right">.141</td>
+          <td align="right">.281</td>
+          <td align="right">.242</td>
+          <td align="right">.523</td>
+          <td align="right">51</td>
+          <td align="right">31</td>
+          <td align="right">2</td>
+          <td align="right">4</td>
+          <td align="right">0</td>
+          <td align="right">0</td>
+          <td align="right">1</td>
+          <td align="left"></td>
+          <td align="left"></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+
+  <div class="table_container" id="div_batting_standard">
+  <table class="sortable  stats_table row_summable" id="batting_standard5">
+  <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+  <thead>
+  <tr class="">
+  <th data-stat="year_ID" align="left" class="tooltip sort_default_asc show_partial_when_sorting" tip="A Star indicates an all-star that season.<br>A Ring indicates the player appeared in WS for winning team.">Year</th>
+  <th data-stat="age" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Player’s age at midnight of June 30th of that year">Age</th>
+  <th data-stat="team_ID" align="center" class="tooltip sort_default_asc show_partial_when_sorting">Tm</th>
+  <th data-stat="lg_ID" align="center" class="tooltip sort_default_asc" tip="<strong>League</strong><br><strong>AL</strong> - American League (1901-present)<br><strong>NL</strong> - National League (1876-present)<br><strong>AA</strong> - American Association (1882-1891)<br><strong>UA</strong> - Union Association (1884)<br><strong>PL</strong> - Players League (1890)<br><strong>FL</strong> - Federal League (1914-1915)<br><strong>NA</strong> - National Association (1871-1875)">Lg</th>
+  <th data-stat="G" align="center" class="tooltip" tip="Games Played or Pitched" data-filter="1" data-name="Games Played">G</th>
+  <th data-stat="PA" align="center" class="tooltip" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-filter="1" data-name="Plate Appearances">PA</th>
+  <th data-stat="AB" align="center" class="tooltip" tip="At Bats" data-filter="1" data-name="At Bats">AB</th>
+  <th data-stat="R" align="center" class="tooltip" tip="Runs Scored/Allowed" data-filter="1" data-name="Runs Scored">R</th>
+  <th data-stat="H" align="center" class="tooltip" tip="Hits/Hits Allowed" data-filter="1" data-name="Hits">H</th>
+  <th data-stat="2B" align="center" class="tooltip" tip="Doubles Hit/Allowed" data-filter="1" data-name="Doubles">2B</th>
+  <th data-stat="3B" align="center" class="tooltip" tip="Triples Hit/Allowed" data-filter="1" data-name="Triples">3B</th>
+  <th data-stat="HR" align="center" class="tooltip" tip="Home Runs Hit/Allowed" data-filter="1" data-name="Home Runs">HR</th>
+  <th data-stat="RBI" align="center" class="tooltip" tip="Runs Batted In" data-filter="1" data-name="Runs Batted In">RBI</th>
+  <th data-stat="SB" align="center" class="tooltip" tip="Stolen Bases" data-filter="1" data-name="Stolen Bases">SB</th>
+  <th data-stat="CS" align="center" class="tooltip" tip="Caught Stealing" data-filter="1" data-name="Caught Stealing">CS</th>
+  <th data-stat="BB" align="center" class="tooltip" tip="Bases on Balls/Walks" data-filter="1" data-name="Bases on Balls">BB</th>
+  <th data-stat="SO" align="center" class="tooltip" tip="Strikeouts" data-filter="1" data-name="Strikeouts">SO</th>
+  <th data-stat="batting_avg" align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-filter="1" data-name="Batting Average">BA</th>
+  <th data-stat="onbase_perc" align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base%">OBP</th>
+  <th data-stat="slugging_perc" align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="Slugging %">SLG</th>
+  <th data-stat="onbase_plus_slugging" align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base Plus Slugging">OPS</th>
+  <th data-stat="onbase_plus_slugging_plus" align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-filter="1" data-name="Adjusted OPS+">OPS+</th>
+  <th data-stat="TB" align="center" class="tooltip" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-filter="1" data-name="Total Bases">TB</th>
+  <th data-stat="GIDP" align="center" class="tooltip" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-filter="1" data-name="Double Plays Grounded Into">GDP</th>
+  <th data-stat="HBP" align="center" class="tooltip" tip="Times Hit by a Pitch." data-filter="1" data-name="Hit By Pitch">HBP</th>
+  <th data-stat="SH" align="center" class="tooltip" tip="Sacrifice Hits (Sacrifice Bunts)" data-filter="1" data-name="Sacrifice Hits">SH</th>
+  <th data-stat="SF" align="center" class="tooltip" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-filter="1" data-name="Sacrifice Flies">SF</th>
+  <th data-stat="IBB" align="center" class="tooltip" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-filter="1" data-name="Intentional Bases on Balls">IBB</th>
+  <th data-stat="pos_season" align="left" class="tooltip sort_default_asc" tip="<strong>Position</strong><br>’*’ indicates position played in 2/3rds of team games,<br>’/’ less than 10 games played.">Pos</th>
+  <th data-stat="award_summary" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Summary of how player did in awards voting that year.<br>GG - Gold Glove<br>SS - Silver Slugger<br>MVP - Most Valuable Player<br>CYA - Cy Young Award<br>ROY - Rookie of the Year">Awards</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="full" id="batting_standard.2005" data-row="5">
+  <td align="left" csk="2005">2005</td>
+  <td align="right">22</td>
+  <td align="left"><a href="/teams/NYY/2005.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2005.shtml">AL</a></td>
+  <td align="right">132</td>
+  <td align="right">551</td>
+  <td align="right">522</td>
+  <td align="right">78</td>
+  <td align="right">155</td>
+  <td align="right">34</td>
+  <td align="right">4</td>
+  <td align="right">14</td>
+  <td align="right">62</td>
+  <td align="right">1</td>
+  <td align="right">3</td>
+  <td align="right">16</td>
+  <td align="right">68</td>
+  <td align="right">.297</td>
+  <td align="right">.320</td>
+  <td align="right">.458</td>
+  <td align="right">.778</td>
+  <td align="right">106</td>
+  <td align="right">239</td>
+  <td align="right">16</td>
+  <td align="right">3</td>
+  <td align="right">7</td>
+  <td align="right">3</td>
+  <td align="right">1</td>
+  <td align="left">*4</td>
+  <td align="left"><a href="/awards/awards_2005.shtml#ALroy">RoY-2</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2006" data-row="7">
+  <td align="left" csk="2006">2006<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">23</td>
+  <td align="left"><a href="/teams/NYY/2006.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2006.shtml">AL</a></td>
+  <td align="right">122</td>
+  <td align="right">508</td>
+  <td align="right">482</td>
+  <td align="right">62</td>
+  <td align="right">165</td>
+  <td align="right">41</td>
+  <td align="right">1</td>
+  <td align="right">15</td>
+  <td align="right">78</td>
+  <td align="right">5</td>
+  <td align="right">2</td>
+  <td align="right">18</td>
+  <td align="right">54</td>
+  <td align="right">.342</td>
+  <td align="right">.365</td>
+  <td align="right">.525</td>
+  <td align="right">.890</td>
+  <td align="right">126</td>
+  <td align="right">253</td>
+  <td align="right">19</td>
+  <td align="right">2</td>
+  <td align="right">1</td>
+  <td align="right">5</td>
+  <td align="right">3</td>
+  <td align="left">*4/D</td>
+  <td align="left"><a title="All-Star" href="/boxes/NLS/NLS200607110.shtml">AS</a>,<a href="/awards/awards_2006.shtml#ALmvp">MVP-22</a>,<a title="Silver Slugger" href="/awards/silver_slugger_al.shtml#2006">SS</a></td>
+  </tr>
+  <tr class="minors_table hidden" data-row="8">
+  <td align="left">2007</td>
+  <td align="right">24</td>
+  <td align="left"><a href="/register/team.cgi?id=d2f069c7" title="Estrellas de Oriente (San Pedro de Macoris, )">ESS</a></td>
+  <td align="left">FgW</td>
+  <td align="right">10</td>
+  <td align="right">42</td>
+  <td align="right">40</td>
+  <td align="right">4</td>
+  <td align="right">14</td>
+  <td align="right">3</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="right">3</td>
+  <td align="right">0</td>
+  <td align="right">1</td>
+  <td align="right">1</td>
+  <td align="right">1</td>
+  <td align="right">.350</td>
+  <td align="right">.357</td>
+  <td align="right">.425</td>
+  <td align="right">.782</td>
+  <td align="right"></td>
+  <td align="right">17</td>
+  <td align="right">4</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="right">1</td>
+  <td align="right">1</td>
+  <td align=""></td>
+  <td align=""><a href="/register/team.cgi?id=d2f069c7" title="Estrellas de Oriente (San Pedro de Macoris, )">ESS</a>&nbsp;· <a href="/register/league.cgi?id=c0fd49bd" title="Dominican Winter League">DOWL</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2007" data-row="9">
+  <td align="left" csk="2007">2007</td>
+  <td align="right">24</td>
+  <td align="left"><a href="/teams/NYY/2007.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2007.shtml">AL</a></td>
+  <td align="right">160</td>
+  <td align="right">669</td>
+  <td align="right">617</td>
+  <td align="right">93</td>
+  <td align="right">189</td>
+  <td align="right">41</td>
+  <td align="right">7</td>
+  <td align="right">19</td>
+  <td align="right">97</td>
+  <td align="right">4</td>
+  <td align="right">5</td>
+  <td align="right">39</td>
+  <td align="right">85</td>
+  <td align="right">.306</td>
+  <td align="right">.353</td>
+  <td align="right">.488</td>
+  <td align="right">.841</td>
+  <td align="right">119</td>
+  <td align="right">301</td>
+  <td align="right">19</td>
+  <td align="right">8</td>
+  <td align="right">1</td>
+  <td align="right">4</td>
+  <td align="right">5</td>
+  <td align="left">*4</td>
+  <td align="left"></td>
+  </tr>
+  <tr class="minors_table hidden" data-row="10">
+  <td align="left">2008</td>
+  <td align="right">25</td>
+  <td align="left"><a href="/register/team.cgi?id=6c43e286" title="Estrellas de Oriente (San Pedro de Macoris, DO)">ESS</a></td>
+  <td align="left">FgW</td>
+  <td align="right">19</td>
+  <td align="right">84</td>
+  <td align="right">75</td>
+  <td align="right">14</td>
+  <td align="right">20</td>
+  <td align="right">8</td>
+  <td align="right">0</td>
+  <td align="right">1</td>
+  <td align="right">15</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="right">7</td>
+  <td align="right">7</td>
+  <td align="right">.267</td>
+  <td align="right">.333</td>
+  <td align="right">.413</td>
+  <td align="right">.747</td>
+  <td align="right"></td>
+  <td align="right">31</td>
+  <td align="right">1</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align=""></td>
+  <td align=""><a href="/register/team.cgi?id=6c43e286" title="Estrellas de Oriente (San Pedro de Macoris, DO)">ESS</a>&nbsp;· <a href="/register/league.cgi?id=7693e3b2" title="Dominican Winter League">DOWL</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2008" data-row="11">
+  <td align="left" csk="2008">2008</td>
+  <td align="right">25</td>
+  <td align="left"><a href="/teams/NYY/2008.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2008.shtml">AL</a></td>
+  <td align="right">159</td>
+  <td align="right">634</td>
+  <td align="right">597</td>
+  <td align="right">70</td>
+  <td align="right">162</td>
+  <td align="right">35</td>
+  <td align="right">3</td>
+  <td align="right">14</td>
+  <td align="right">72</td>
+  <td align="right">2</td>
+  <td align="right">4</td>
+  <td align="right">26</td>
+  <td align="right">65</td>
+  <td align="right">.271</td>
+  <td align="right">.305</td>
+  <td align="right">.410</td>
+  <td align="right">.715</td>
+  <td align="right">86</td>
+  <td align="right">245</td>
+  <td align="right">18</td>
+  <td align="right">5</td>
+  <td align="right">1</td>
+  <td align="right">5</td>
+  <td align="right">3</td>
+  <td align="left">*4</td>
+  <td align="left"></td>
+  </tr>
+  <tr class="full" id="batting_standard.2009" data-row="12">
+  <td align="left" csk="2009">2009</td>
+  <td align="right">26</td>
+  <td align="left"><a href="/teams/NYY/2009.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2009.shtml">AL</a></td>
+  <td align="right"><strong>161</strong></td>
+  <td align="right">674</td>
+  <td align="right">637</td>
+  <td align="right">103</td>
+  <td align="right">204</td>
+  <td align="right">48</td>
+  <td align="right">2</td>
+  <td align="right">25</td>
+  <td align="right">85</td>
+  <td align="right">5</td>
+  <td align="right">7</td>
+  <td align="right">30</td>
+  <td align="right">63</td>
+  <td align="right">.320</td>
+  <td align="right">.352</td>
+  <td align="right">.520</td>
+  <td align="right">.871</td>
+  <td align="right">121</td>
+  <td align="right">331</td>
+  <td align="right">22</td>
+  <td align="right">3</td>
+  <td align="right">0</td>
+  <td align="right">4</td>
+  <td align="right">2</td>
+  <td align="left">*4</td>
+  <td align="left"><a href="/awards/awards_2009.shtml#ALmvp">MVP-17</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2010" data-row="13">
+  <td align="left" csk="2010">2010<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">27</td>
+  <td align="left"><a href="/teams/NYY/2010.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2010.shtml">AL</a></td>
+  <td align="right">160</td>
+  <td align="right">696</td>
+  <td align="right">626</td>
+  <td align="right">103</td>
+  <td align="right">200</td>
+  <td align="right">41</td>
+  <td align="right">3</td>
+  <td align="right">29</td>
+  <td align="right">109</td>
+  <td align="right">3</td>
+  <td align="right">2</td>
+  <td align="right">57</td>
+  <td align="right">77</td>
+  <td align="right">.319</td>
+  <td align="right">.381</td>
+  <td align="right">.534</td>
+  <td align="right">.914</td>
+  <td align="right">141</td>
+  <td align="right">334</td>
+  <td align="right">19</td>
+  <td align="right">8</td>
+  <td align="right">0</td>
+  <td align="right">5</td>
+  <td align="right">14</td>
+  <td align="left">*4/D</td>
+  <td align="left"><a title="All-Star" href="/boxes/ALS/ALS201007130.shtml">AS</a>,<a href="/awards/awards_2010.shtml#ALmvp">MVP-3</a>,<a title="Gold Glove" href="/awards/gold_glove_al.shtml#2010">GG</a>,<a title="Silver Slugger" href="/awards/silver_slugger_al.shtml#2010">SS</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2011" data-row="14">
+  <td align="left" csk="2011">2011<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">28</td>
+  <td align="left"><a href="/teams/NYY/2011.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2011.shtml">AL</a></td>
+  <td align="right">159</td>
+  <td align="right">681</td>
+  <td align="right">623</td>
+  <td align="right">104</td>
+  <td align="right">188</td>
+  <td align="right">46</td>
+  <td align="right">7</td>
+  <td align="right">28</td>
+  <td align="right">118</td>
+  <td align="right">8</td>
+  <td align="right">2</td>
+  <td align="right">38</td>
+  <td align="right">96</td>
+  <td align="right">.302</td>
+  <td align="right">.349</td>
+  <td align="right">.533</td>
+  <td align="right">.882</td>
+  <td align="right">133</td>
+  <td align="right">332</td>
+  <td align="right">18</td>
+  <td align="right">12</td>
+  <td align="right">0</td>
+  <td align="right">8</td>
+  <td align="right">11</td>
+  <td align="left">*4/D</td>
+  <td align="left"><a title="All-Star" href="/boxes/NLS/NLS201107120.shtml">AS</a>,<a href="/awards/awards_2011.shtml#ALmvp">MVP-6</a>,<a title="Silver Slugger" href="/awards/silver_slugger_al.shtml#2011">SS</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2012" data-row="15">
+  <td align="left" csk="2012">2012<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">29</td>
+  <td align="left"><a href="/teams/NYY/2012.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2012.shtml">AL</a></td>
+  <td align="right">161</td>
+  <td align="right">697</td>
+  <td align="right">627</td>
+  <td align="right">105</td>
+  <td align="right">196</td>
+  <td align="right">48</td>
+  <td align="right">1</td>
+  <td align="right">33</td>
+  <td align="right">94</td>
+  <td align="right">3</td>
+  <td align="right">2</td>
+  <td align="right">61</td>
+  <td align="right">96</td>
+  <td align="right">.313</td>
+  <td align="right">.379</td>
+  <td align="right">.550</td>
+  <td align="right">.929</td>
+  <td align="right">148</td>
+  <td align="right">345</td>
+  <td align="right">22</td>
+  <td align="right">7</td>
+  <td align="right">0</td>
+  <td align="right">2</td>
+  <td align="right">10</td>
+  <td align="left">*4/D</td>
+  <td align="left"><a title="All-Star" href="/boxes/ALS/ALS201207100.shtml">AS</a>,<a href="/awards/awards_2012.shtml#ALmvp">MVP-4</a>,<a title="Gold Glove" href="/awards/gold_glove_al.shtml#2012">GG</a>,<a title="Silver Slugger" href="/awards/silver_slugger_al.shtml#2012">SS</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2013" data-row="16">
+  <td align="left" csk="2013">2013<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">30</td>
+  <td align="left"><a href="/teams/NYY/2013.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2013.shtml">AL</a></td>
+  <td align="right">160</td>
+  <td align="right">681</td>
+  <td align="right">605</td>
+  <td align="right">81</td>
+  <td align="right">190</td>
+  <td align="right">41</td>
+  <td align="right">0</td>
+  <td align="right">27</td>
+  <td align="right">107</td>
+  <td align="right">7</td>
+  <td align="right">1</td>
+  <td align="right">65</td>
+  <td align="right">85</td>
+  <td align="right">.314</td>
+  <td align="right">.383</td>
+  <td align="right">.516</td>
+  <td align="right">.899</td>
+  <td align="right">147</td>
+  <td align="right">312</td>
+  <td align="right">18</td>
+  <td align="right">6</td>
+  <td align="right">0</td>
+  <td align="right">5</td>
+  <td align="right">16</td>
+  <td align="left">*4/D6</td>
+  <td align="left"><a title="All-Star" href="/boxes/NLS/NLS201307160.shtml">AS</a>,<a href="/awards/awards_2013.shtml#ALmvp">MVP-5</a>,<a title="Silver Slugger" href="/awards/silver_slugger_al.shtml#2013">SS</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2014" data-row="17">
+  <td align="left" csk="2014">2014<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">31</td>
+  <td align="left"><a href="/teams/SEA/2014.shtml" title="Seattle Mariners">SEA</a></td>
+  <td align="left"><a href="/leagues/AL/2014.shtml">AL</a></td>
+  <td align="right">157</td>
+  <td align="right">665</td>
+  <td align="right">595</td>
+  <td align="right">77</td>
+  <td align="right">187</td>
+  <td align="right">37</td>
+  <td align="right">2</td>
+  <td align="right">14</td>
+  <td align="right">82</td>
+  <td align="right">10</td>
+  <td align="right">3</td>
+  <td align="right">61</td>
+  <td align="right">68</td>
+  <td align="right">.314</td>
+  <td align="right">.382</td>
+  <td align="right">.454</td>
+  <td align="right">.836</td>
+  <td align="right">142</td>
+  <td align="right">270</td>
+  <td align="right">19</td>
+  <td align="right">6</td>
+  <td align="right">0</td>
+  <td align="right">3</td>
+  <td align="right">20</td>
+  <td align="left">*4/D</td>
+  <td align="left"><a title="All-Star" href="/boxes/ALS/ALS201407150.shtml">AS</a>,<a href="/awards/awards_2014.shtml#ALmvp">MVP-5</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2015" data-row="18">
+  <td align="left" csk="2015">2015</td>
+  <td align="right">32</td>
+  <td align="left"><a href="/teams/SEA/2015.shtml" title="Seattle Mariners">SEA</a></td>
+  <td align="left"><a href="/leagues/AL/2015.shtml">AL</a></td>
+  <td align="right">156</td>
+  <td align="right">674</td>
+  <td align="right">624</td>
+  <td align="right">82</td>
+  <td align="right">179</td>
+  <td align="right">34</td>
+  <td align="right">1</td>
+  <td align="right">21</td>
+  <td align="right">79</td>
+  <td align="right">2</td>
+  <td align="right">6</td>
+  <td align="right">43</td>
+  <td align="right">107</td>
+  <td align="right">.287</td>
+  <td align="right">.334</td>
+  <td align="right">.446</td>
+  <td align="right">.779</td>
+  <td align="right">118</td>
+  <td align="right">278</td>
+  <td align="right">26</td>
+  <td align="right">3</td>
+  <td align="right">0</td>
+  <td align="right">4</td>
+  <td align="right">5</td>
+  <td align="left">*4/D</td>
+  <td align="left"></td>
+  </tr>
+  <tr class="full" id="batting_standard.2016" data-row="19">
+  <td align="left" csk="2016">2016</td>
+  <td align="right">33</td>
+  <td align="left"><a href="/teams/SEA/2016.shtml" title="Seattle Mariners">SEA</a></td>
+  <td align="left"><a href="/leagues/AL/2016.shtml">AL</a></td>
+  <td align="right">46</td>
+  <td align="right">206</td>
+  <td align="right">190</td>
+  <td align="right">31</td>
+  <td align="right">56</td>
+  <td align="right">13</td>
+  <td align="right">0</td>
+  <td align="right"><strong>14</strong></td>
+  <td align="right">43</td>
+  <td align="right">0</td>
+  <td align="right">1</td>
+  <td align="right">12</td>
+  <td align="right">28</td>
+  <td align="right">.295</td>
+  <td align="right">.345</td>
+  <td align="right">.584</td>
+  <td align="right">.929</td>
+  <td align="right">157</td>
+  <td align="right">111</td>
+  <td align="right">5</td>
+  <td align="right">3</td>
+  <td align="right">0</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="left">*4/D</td>
+  <td align="left"></td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr class=" stat_total" data-row="20">
+  <td align="left" colspan="4">12 Yrs</td>
+  <td align="right">1733</td>
+  <td align="right">7336</td>
+  <td align="right">6745</td>
+  <td align="right">989</td>
+  <td align="right">2071</td>
+  <td align="right">459</td>
+  <td align="right">31</td>
+  <td align="right">253</td>
+  <td align="right">1026</td>
+  <td align="right">50</td>
+  <td align="right">38</td>
+  <td align="right">466</td>
+  <td align="right">892</td>
+  <td align="right">.307</td>
+  <td align="right">.355</td>
+  <td align="right">.497</td>
+  <td align="right">.852</td>
+  <td align="right">127</td>
+  <td align="right">3351</td>
+  <td align="right">221</td>
+  <td align="right">66</td>
+  <td align="right">10</td>
+  <td align="right">49</td>
+  <td align="right">90</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class=" stat_total" data-row="21">
+  <td align="left" colspan="4"><a href="http://www.baseball-reference.com/about/bat_glossary.shtml#162_avg">162 Game Avg.</a></td>
+  <td align="right">162</td>
+  <td align="right">686</td>
+  <td align="right">631</td>
+  <td align="right">92</td>
+  <td align="right">194</td>
+  <td align="right">43</td>
+  <td align="right">3</td>
+  <td align="right">24</td>
+  <td align="right">96</td>
+  <td align="right">5</td>
+  <td align="right">4</td>
+  <td align="right">44</td>
+  <td align="right">83</td>
+  <td align="right">.307</td>
+  <td align="right">.355</td>
+  <td align="right">.497</td>
+  <td align="right">.852</td>
+  <td align="right">127</td>
+  <td align="right">313</td>
+  <td align="right">21</td>
+  <td align="right">6</td>
+  <td align="right">1</td>
+  <td align="right">5</td>
+  <td align="right">8</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="blank_table partial_table stat_total" data-row="22">
+  <td align="left" colspan="4"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="23">
+  <td align="left" colspan="4">NYY (9 yrs)</td>
+  <td align="right">1374</td>
+  <td align="right">5791</td>
+  <td align="right">5336</td>
+  <td align="right">799</td>
+  <td align="right">1649</td>
+  <td align="right">375</td>
+  <td align="right">28</td>
+  <td align="right">204</td>
+  <td align="right">822</td>
+  <td align="right">38</td>
+  <td align="right">28</td>
+  <td align="right">350</td>
+  <td align="right">689</td>
+  <td align="right">.309</td>
+  <td align="right">.355</td>
+  <td align="right">.504</td>
+  <td align="right">.860</td>
+  <td align="right">126</td>
+  <td align="right">2692</td>
+  <td align="right">171</td>
+  <td align="right">54</td>
+  <td align="right">10</td>
+  <td align="right">41</td>
+  <td align="right">65</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="24">
+  <td align="left" colspan="4">SEA (3 yrs)</td>
+  <td align="right">359</td>
+  <td align="right">1545</td>
+  <td align="right">1409</td>
+  <td align="right">190</td>
+  <td align="right">422</td>
+  <td align="right">84</td>
+  <td align="right">3</td>
+  <td align="right">49</td>
+  <td align="right">204</td>
+  <td align="right">12</td>
+  <td align="right">10</td>
+  <td align="right">116</td>
+  <td align="right">203</td>
+  <td align="right">.300</td>
+  <td align="right">.356</td>
+  <td align="right">.468</td>
+  <td align="right">.824</td>
+  <td align="right">134</td>
+  <td align="right">659</td>
+  <td align="right">50</td>
+  <td align="right">12</td>
+  <td align="right">0</td>
+  <td align="right">8</td>
+  <td align="right">25</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  </tfoot>
+  </table>
+  </div>
+
+
+  <div class="table_container" id="div_batting_standard">
+  <table class="sortable  stats_table row_summable" id="batting_standard6">
+  <colgroup><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col><col></colgroup>
+  <thead>
+  <tr class="">
+  <th data-stat="year_ID" align="left" class="tooltip sort_default_asc show_partial_when_sorting" tip="A Star indicates an all-star that season.<br>A Ring indicates the player appeared in WS for winning team.">Year</th>
+  <th data-stat="age" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Player’s age at midnight of June 30th of that year">Age</th>
+  <th data-stat="team_ID" align="center" class="tooltip sort_default_asc show_partial_when_sorting">Tm</th>
+  <th data-stat="lg_ID" align="center" class="tooltip sort_default_asc" tip="<strong>League</strong><br><strong>AL</strong> - American League (1901-present)<br><strong>NL</strong> - National League (1876-present)<br><strong>AA</strong> - American Association (1882-1891)<br><strong>UA</strong> - Union Association (1884)<br><strong>PL</strong> - Players League (1890)<br><strong>FL</strong> - Federal League (1914-1915)<br><strong>NA</strong> - National Association (1871-1875)">Lg</th>
+  <th data-stat="G" align="center" class="tooltip" tip="Games Played or Pitched" data-filter="1" data-name="Games Played">G</th>
+  <th data-stat="PA" align="center" class="tooltip" tip="<strong>Plate Appearances</strong><br>When available, we use actual plate appearances from play-by-play game accounts<br>Otherwise estimated using AB + BB + HBP + SF + SH,<br>which excludes catcher interferences.<br>When <span class=tooltip>this color</span> click for a summary of each PA." data-filter="1" data-name="Plate Appearances">PA</th>
+  <th data-stat="AB" align="center" class="tooltip" tip="At Bats" data-filter="1" data-name="At Bats">AB</th>
+  <th data-stat="R" align="center" class="tooltip" tip="Runs Scored/Allowed" data-filter="1" data-name="Runs Scored">R</th>
+  <th data-stat="H" align="center" class="tooltip" tip="Hits/Hits Allowed" data-filter="1" data-name="Hits">H</th>
+  <th data-stat="2B" align="center" class="tooltip" tip="Doubles Hit/Allowed" data-filter="1" data-name="Doubles">2B</th>
+  <th data-stat="3B" align="center" class="tooltip" tip="Triples Hit/Allowed" data-filter="1" data-name="Triples">3B</th>
+  <th data-stat="HR" align="center" class="tooltip" tip="Home Runs Hit/Allowed" data-filter="1" data-name="Home Runs">HR</th>
+  <th data-stat="RBI" align="center" class="tooltip" tip="Runs Batted In" data-filter="1" data-name="Runs Batted In">RBI</th>
+  <th data-stat="SB" align="center" class="tooltip" tip="Stolen Bases" data-filter="1" data-name="Stolen Bases">SB</th>
+  <th data-stat="CS" align="center" class="tooltip" tip="Caught Stealing" data-filter="1" data-name="Caught Stealing">CS</th>
+  <th data-stat="BB" align="center" class="tooltip" tip="Bases on Balls/Walks" data-filter="1" data-name="Bases on Balls">BB</th>
+  <th data-stat="SO" align="center" class="tooltip" tip="Strikeouts" data-filter="1" data-name="Strikeouts">SO</th>
+  <th data-stat="batting_avg" align="center" class="tooltip hide_non_quals" tip="<strong>Hits/At Bats</strong><br>For recent years, leaders need 3.1 PA<br>per team game played<br>Bold indicates highest BA using current stats<br><span class=glimmer>Gold</span> means awarded title at end of year." data-filter="1" data-name="Batting Average">BA</th>
+  <th data-stat="onbase_perc" align="center" class="tooltip hide_non_quals" tip="<strong>(H + BB + HBP)/(At Bats + BB + HBP + SF)</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base%">OBP</th>
+  <th data-stat="slugging_perc" align="center" class="tooltip hide_non_quals" tip="<strong>Total Bases/At Bats or <br>(1B + 2*2B + 3*3B + 4*HR)/AB</strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="Slugging %">SLG</th>
+  <th data-stat="onbase_plus_slugging" align="center" class="tooltip hide_non_quals" tip="<strong>On-Base + Slugging Percentages </strong><br>For recent years, leaders need 3.1 PA<br>per team game played" data-filter="1" data-name="On-Base Plus Slugging">OPS</th>
+  <th data-stat="onbase_plus_slugging_plus" align="center" class="tooltip hide_non_quals" tip="<strong>OPS+</strong><br>100*[OBP/lg OBP + SLG/lg SLG - 1]<br>Adjusted to the player’s ballpark(s)" data-filter="1" data-name="Adjusted OPS+">OPS+</th>
+  <th data-stat="TB" align="center" class="tooltip" tip="<strong>Total Bases</strong><br>Singles + 2 x Doubles + 3 x Triples + 4 x Home Runs." data-filter="1" data-name="Total Bases">TB</th>
+  <th data-stat="GIDP" align="center" class="tooltip" tip="<strong>Double Plays Grounded Into</strong><br>Only includes standard 6-4-3, 4-3, etc. double plays.<br>First tracked in 1933.<br>For gamelogs only in seasons we have play-by-play, we include triple plays as well.<br>All official seasonal totals do not include GITP's." data-filter="1" data-name="Double Plays Grounded Into">GDP</th>
+  <th data-stat="HBP" align="center" class="tooltip" tip="Times Hit by a Pitch." data-filter="1" data-name="Hit By Pitch">HBP</th>
+  <th data-stat="SH" align="center" class="tooltip" tip="Sacrifice Hits (Sacrifice Bunts)" data-filter="1" data-name="Sacrifice Hits">SH</th>
+  <th data-stat="SF" align="center" class="tooltip" tip="<strong>Sacrifice Flies</strong><br>First tracked in 1954." data-filter="1" data-name="Sacrifice Flies">SF</th>
+  <th data-stat="IBB" align="center" class="tooltip" tip="<strong>Intentional Bases on Balls</strong><br>First tracked in 1955." data-filter="1" data-name="Intentional Bases on Balls">IBB</th>
+  <th data-stat="pos_season" align="left" class="tooltip sort_default_asc" tip="<strong>Position</strong><br>’*’ indicates position played in 2/3rds of team games,<br>’/’ less than 10 games played.">Pos</th>
+  <th data-stat="award_summary" align="center" class="tooltip sort_default_asc show_partial_when_sorting" tip="Summary of how player did in awards voting that year.<br>GG - Gold Glove<br>SS - Silver Slugger<br>MVP - Most Valuable Player<br>CYA - Cy Young Award<br>ROY - Rookie of the Year">Awards</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr class="full" id="batting_standard.2010" data-row="4">
+  <td align="left" csk="2010">2010</td>
+  <td align="right">20</td>
+  <td align="left"><a href="/teams/CHC/2010.shtml" title="Chicago Cubs">CHC</a></td>
+  <td align="left"><a href="/leagues/NL/2010.shtml">NL</a></td>
+  <td align="right">125</td>
+  <td align="right">506</td>
+  <td align="right">463</td>
+  <td align="right">53</td>
+  <td align="right">139</td>
+  <td align="right">31</td>
+  <td align="right">5</td>
+  <td align="right">3</td>
+  <td align="right">41</td>
+  <td align="right">10</td>
+  <td align="right">8</td>
+  <td align="right">29</td>
+  <td align="right">71</td>
+  <td align="right">.300</td>
+  <td align="right">.347</td>
+  <td align="right">.408</td>
+  <td align="right">.755</td>
+  <td align="right">100</td>
+  <td align="right">189</td>
+  <td align="right">14</td>
+  <td align="right">6</td>
+  <td align="right">4</td>
+  <td align="right">4</td>
+  <td align="right">7</td>
+  <td align="left">*6</td>
+  <td align="left"><a href="/awards/awards_2010.shtml#NLroy">RoY-5</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2011" data-row="5">
+  <td align="left" csk="2011">2011<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">21</td>
+  <td align="left"><a href="/teams/CHC/2011.shtml" title="Chicago Cubs">CHC</a></td>
+  <td align="left"><a href="/leagues/NL/2011.shtml">NL</a></td>
+  <td align="right">158</td>
+  <td align="right">715</td>
+  <td align="right"><strong>674</strong></td>
+  <td align="right">91</td>
+  <td align="right"><strong>207</strong></td>
+  <td align="right">36</td>
+  <td align="right">9</td>
+  <td align="right">10</td>
+  <td align="right">66</td>
+  <td align="right">22</td>
+  <td align="right">9</td>
+  <td align="right">35</td>
+  <td align="right">96</td>
+  <td align="right">.307</td>
+  <td align="right">.341</td>
+  <td align="right">.432</td>
+  <td align="right">.773</td>
+  <td align="right">111</td>
+  <td align="right">291</td>
+  <td align="right">20</td>
+  <td align="right">2</td>
+  <td align="right">0</td>
+  <td align="right">4</td>
+  <td align="right">2</td>
+  <td align="left">*6</td>
+  <td align="left"><a title="All-Star" href="/boxes/NLS/NLS201107120.shtml">AS</a>,<a href="/awards/awards_2011.shtml#NLmvp">MVP-23</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2012" data-row="6">
+  <td align="left" csk="2012">2012<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">22</td>
+  <td align="left"><a href="/teams/CHC/2012.shtml" title="Chicago Cubs">CHC</a></td>
+  <td align="left"><a href="/leagues/NL/2012.shtml">NL</a></td>
+  <td align="right"><strong><em>162</em></strong></td>
+  <td align="right">691</td>
+  <td align="right"><strong>646</strong></td>
+  <td align="right">78</td>
+  <td align="right">183</td>
+  <td align="right">29</td>
+  <td align="right">12</td>
+  <td align="right">14</td>
+  <td align="right">78</td>
+  <td align="right">25</td>
+  <td align="right"><strong><em>13</em></strong></td>
+  <td align="right">36</td>
+  <td align="right">100</td>
+  <td align="right">.283</td>
+  <td align="right">.323</td>
+  <td align="right">.430</td>
+  <td align="right">.753</td>
+  <td align="right">102</td>
+  <td align="right">278</td>
+  <td align="right">15</td>
+  <td align="right">4</td>
+  <td align="right">0</td>
+  <td align="right">5</td>
+  <td align="right">5</td>
+  <td align="left">*6</td>
+  <td align="left"><a title="All-Star" href="/boxes/ALS/ALS201207100.shtml">AS</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2013" data-row="7">
+  <td align="left" csk="2013">2013</td>
+  <td align="right">23</td>
+  <td align="left"><a href="/teams/CHC/2013.shtml" title="Chicago Cubs">CHC</a></td>
+  <td align="left"><a href="/leagues/NL/2013.shtml">NL</a></td>
+  <td align="right">161</td>
+  <td align="right">705</td>
+  <td align="right"><strong>666</strong></td>
+  <td align="right">59</td>
+  <td align="right">163</td>
+  <td align="right">34</td>
+  <td align="right">2</td>
+  <td align="right">10</td>
+  <td align="right">44</td>
+  <td align="right">9</td>
+  <td align="right">6</td>
+  <td align="right">30</td>
+  <td align="right">129</td>
+  <td align="right">.245</td>
+  <td align="right">.284</td>
+  <td align="right">.347</td>
+  <td align="right">.631</td>
+  <td align="right">73</td>
+  <td align="right">231</td>
+  <td align="right">21</td>
+  <td align="right">7</td>
+  <td align="right">1</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="left">*6</td>
+  <td align="left"></td>
+  </tr>
+  <tr class="full" id="batting_standard.2014" data-row="8">
+  <td align="left" csk="2014">2014<span class="bold_text" style="color:#c0c0c0">&nbsp;★</span></td>
+  <td align="right">24</td>
+  <td align="left"><a href="/teams/CHC/2014.shtml" title="Chicago Cubs">CHC</a></td>
+  <td align="left"><a href="/leagues/NL/2014.shtml">NL</a></td>
+  <td align="right">134</td>
+  <td align="right">569</td>
+  <td align="right">528</td>
+  <td align="right">58</td>
+  <td align="right">154</td>
+  <td align="right">33</td>
+  <td align="right">1</td>
+  <td align="right">14</td>
+  <td align="right">65</td>
+  <td align="right">4</td>
+  <td align="right">4</td>
+  <td align="right">35</td>
+  <td align="right">100</td>
+  <td align="right">.292</td>
+  <td align="right">.339</td>
+  <td align="right">.438</td>
+  <td align="right">.777</td>
+  <td align="right">115</td>
+  <td align="right">231</td>
+  <td align="right">18</td>
+  <td align="right">4</td>
+  <td align="right">0</td>
+  <td align="right">2</td>
+  <td align="right">4</td>
+  <td align="left">*6</td>
+  <td align="left"><a title="All-Star" href="/boxes/ALS/ALS201407150.shtml">AS</a></td>
+  </tr>
+  <tr class="full" id="batting_standard.2015" data-row="9">
+  <td align="left" csk="2015">2015</td>
+  <td align="right">25</td>
+  <td align="left"><a href="/teams/CHC/2015.shtml" title="Chicago Cubs">CHC</a></td>
+  <td align="left"><a href="/leagues/NL/2015.shtml">NL</a></td>
+  <td align="right">151</td>
+  <td align="right">578</td>
+  <td align="right">547</td>
+  <td align="right">52</td>
+  <td align="right">145</td>
+  <td align="right">23</td>
+  <td align="right">2</td>
+  <td align="right">11</td>
+  <td align="right">69</td>
+  <td align="right">5</td>
+  <td align="right">5</td>
+  <td align="right">21</td>
+  <td align="right">91</td>
+  <td align="right">.265</td>
+  <td align="right">.296</td>
+  <td align="right">.375</td>
+  <td align="right">.671</td>
+  <td align="right">83</td>
+  <td align="right">205</td>
+  <td align="right">18</td>
+  <td align="right">5</td>
+  <td align="right">1</td>
+  <td align="right">4</td>
+  <td align="right">6</td>
+  <td align="left">*64</td>
+  <td align="left"></td>
+  </tr>
+  <tr class="full" id="batting_standard.2016" data-row="10">
+  <td align="left" csk="2016">2016</td>
+  <td align="right">26</td>
+  <td align="left"><a href="/teams/NYY/2016.shtml" title="New York Yankees">NYY</a></td>
+  <td align="left"><a href="/leagues/AL/2016.shtml">AL</a></td>
+  <td align="right">45</td>
+  <td align="right">183</td>
+  <td align="right">174</td>
+  <td align="right">14</td>
+  <td align="right">46</td>
+  <td align="right">9</td>
+  <td align="right">1</td>
+  <td align="right">6</td>
+  <td align="right">19</td>
+  <td align="right">2</td>
+  <td align="right">0</td>
+  <td align="right">8</td>
+  <td align="right">32</td>
+  <td align="right">.264</td>
+  <td align="right">.301</td>
+  <td align="right">.431</td>
+  <td align="right">.732</td>
+  <td align="right">99</td>
+  <td align="right">75</td>
+  <td align="right">6</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="left">*4</td>
+  <td align="left"></td>
+  </tr>
+  </tbody>
+  <tfoot>
+  <tr class="stat_total" data-row="11">
+  <td align="left" colspan="4">7 Yrs</td>
+  <td align="right">936</td>
+  <td align="right">3947</td>
+  <td align="right">3698</td>
+  <td align="right">405</td>
+  <td align="right">1037</td>
+  <td align="right">195</td>
+  <td align="right">32</td>
+  <td align="right">68</td>
+  <td align="right">382</td>
+  <td align="right">77</td>
+  <td align="right">45</td>
+  <td align="right">194</td>
+  <td align="right">619</td>
+  <td align="right">.280</td>
+  <td align="right">.320</td>
+  <td align="right">.406</td>
+  <td align="right">.725</td>
+  <td align="right">97</td>
+  <td align="right">1500</td>
+  <td align="right">112</td>
+  <td align="right">29</td>
+  <td align="right">6</td>
+  <td align="right">20</td>
+  <td align="right">24</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="12">
+  <td align="left" colspan="4"><a href="http://www.baseball-reference.com/about/bat_glossary.shtml#162_avg">162 Game Avg.</a></td>
+  <td align="right">162</td>
+  <td align="right">683</td>
+  <td align="right">640</td>
+  <td align="right">70</td>
+  <td align="right">179</td>
+  <td align="right">34</td>
+  <td align="right">6</td>
+  <td align="right">12</td>
+  <td align="right">66</td>
+  <td align="right">13</td>
+  <td align="right">8</td>
+  <td align="right">34</td>
+  <td align="right">107</td>
+  <td align="right">.280</td>
+  <td align="right">.320</td>
+  <td align="right">.406</td>
+  <td align="right">.725</td>
+  <td align="right">97</td>
+  <td align="right">260</td>
+  <td align="right">19</td>
+  <td align="right">5</td>
+  <td align="right">1</td>
+  <td align="right">3</td>
+  <td align="right">4</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="blank_table partial_table stat_total" data-row="13">
+  <td align="left" colspan="4"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="14">
+  <td align="left" colspan="4">CHC (6 yrs)</td>
+  <td align="right">891</td>
+  <td align="right">3764</td>
+  <td align="right">3524</td>
+  <td align="right">391</td>
+  <td align="right">991</td>
+  <td align="right">186</td>
+  <td align="right">31</td>
+  <td align="right">62</td>
+  <td align="right">363</td>
+  <td align="right">75</td>
+  <td align="right">45</td>
+  <td align="right">186</td>
+  <td align="right">587</td>
+  <td align="right">.281</td>
+  <td align="right">.321</td>
+  <td align="right">.404</td>
+  <td align="right">.725</td>
+  <td align="right">97</td>
+  <td align="right">1425</td>
+  <td align="right">106</td>
+  <td align="right">28</td>
+  <td align="right">6</td>
+  <td align="right">20</td>
+  <td align="right">24</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="15">
+  <td align="left" colspan="4">NYY (1 yr)</td>
+  <td align="right">45</td>
+  <td align="right">183</td>
+  <td align="right">174</td>
+  <td align="right">14</td>
+  <td align="right">46</td>
+  <td align="right">9</td>
+  <td align="right">1</td>
+  <td align="right">6</td>
+  <td align="right">19</td>
+  <td align="right">2</td>
+  <td align="right">0</td>
+  <td align="right">8</td>
+  <td align="right">32</td>
+  <td align="right">.264</td>
+  <td align="right">.301</td>
+  <td align="right">.431</td>
+  <td align="right">.732</td>
+  <td align="right">99</td>
+  <td align="right">75</td>
+  <td align="right">6</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="blank_table partial_table stat_total" data-row="16">
+  <td align="left" colspan="4"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="right"></td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="17">
+  <td align="left" colspan="4">NL (6 yrs)</td>
+  <td align="right">891</td>
+  <td align="right">3764</td>
+  <td align="right">3524</td>
+  <td align="right">391</td>
+  <td align="right">991</td>
+  <td align="right">186</td>
+  <td align="right">31</td>
+  <td align="right">62</td>
+  <td align="right">363</td>
+  <td align="right">75</td>
+  <td align="right">45</td>
+  <td align="right">186</td>
+  <td align="right">587</td>
+  <td align="right">.281</td>
+  <td align="right">.321</td>
+  <td align="right">.404</td>
+  <td align="right">.725</td>
+  <td align="right">97</td>
+  <td align="right">1425</td>
+  <td align="right">106</td>
+  <td align="right">28</td>
+  <td align="right">6</td>
+  <td align="right">20</td>
+  <td align="right">24</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  <tr class="stat_total" data-row="18">
+  <td align="left" colspan="4">AL (1 yr)</td>
+  <td align="right">45</td>
+  <td align="right">183</td>
+  <td align="right">174</td>
+  <td align="right">14</td>
+  <td align="right">46</td>
+  <td align="right">9</td>
+  <td align="right">1</td>
+  <td align="right">6</td>
+  <td align="right">19</td>
+  <td align="right">2</td>
+  <td align="right">0</td>
+  <td align="right">8</td>
+  <td align="right">32</td>
+  <td align="right">.264</td>
+  <td align="right">.301</td>
+  <td align="right">.431</td>
+  <td align="right">.732</td>
+  <td align="right">99</td>
+  <td align="right">75</td>
+  <td align="right">6</td>
+  <td align="right">1</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="right">0</td>
+  <td align="left"></td>
+  <td align="left"></td>
+  </tr>
+  </tfoot>
+  </table>
+  </div>
+</div>
+</body>
+</html>

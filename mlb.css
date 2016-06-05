@@ -1,0 +1,15 @@
+table {
+  width: 700px;
+  font-family: helvetica;
+  font-size: 0.5em;
+  float: left;
+}
+
+div {
+  width: 1700px;
+  margin: 0 auto;
+}
+
+body {
+    background-color: lightblue;
+}
